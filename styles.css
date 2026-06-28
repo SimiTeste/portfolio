@@ -1092,3 +1092,31 @@ body {
         box-sizing: border-box;
     }
 }
+
+/* ===================================================
+   VERSÃO PARA CELULAR (RESPONSIVIDADE) - ATUALIZADO
+=================================================== */
+@media (max-width: 768px) {
+    
+    /* ... (outras regras de responsividade que você já tem) ... */
+
+    /* CENTRALIZAR A FOTO APENAS NO CELULAR */
+    .container-perfil {
+        display: flex; /* Transforma o container em flexbox */
+        justify-content: center; /* Centraliza a foto horizontalmente */
+        width: 100%; /* Garante que ocupa toda a largura disponível */
+        margin-bottom: 20px; /* Adiciona um espacinho embaixo da foto */
+    }
+
+    /* Opcional: Garanta que a foto em si tenha tamanho correto */
+    .foto-perfil {
+        max-width: 150px; /* Define um tamanho máximo bom para celular */
+        height: auto; /* Mantém a proporção da imagem */
+        border-radius: 50%; /* Opcional: Deixa redonda, se preferir */
+        /* display: block; */ /* Às vezes necessário se usar margens automáticas em vez de flexbox */
+        /* margin-left: auto; */
+        /* margin-right: auto; */ /* Forma clássica de centralizar block-elements */
+    }
+
+    /* ... (restante das suas regras do @media) ... */
+}
