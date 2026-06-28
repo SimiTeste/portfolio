@@ -127,31 +127,69 @@ h2 {
     margin-bottom: 5px;
 }
 
-/* =========================
-   VOLUNTARIADO
-========================= */
-.voluntariado-fotos {
-    margin: 10px auto 0 auto; /* Reduzido para 10px para aproximar dos nomes/texto */
+/* ===================================================
+   VOLUNTARIADO (INTERATIVO & MAGNÉTICO)
+=================================================== */
+.galeria-container {
+    margin: 10px auto 0 auto; /* Mantém bem próximo dos nomes/texto */
     display: grid;
-    /* Mantém as 4 colunas bem distribuídas e responsivas */
+    /* Mantém as suas 4 colunas bem distribuídas e responsivas */
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
     gap: 20px;
-    max-width: 1250px; /* Aumentado para espalhar mais na tela e diminuir as bordas laterais */
+    max-width: 1250px; /* Espalha mais na tela e diminui as bordas laterais */
     width: 100%;
-    padding: 0 20px; /* Proteção sutil para telas menores */
+    padding: 0 20px; 
+    position: relative;
 }
 
-.voluntariado-fotos img {
-    width: 100%; /* Preenche totalmente o espaço da coluna */
-    height: 320px; /* Altura equilibrada para não distorcer ao espalhar */
-    object-fit: cover;
+/* O Card que envolve a foto e a legenda */
+.foto-card {
+    background: #09090b; /* Fundo escuro premium */
+    border: 1.5px solid #27272a;
     border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    cursor: grab;
+    user-select: none;
+    position: relative;
+    z-index: 1;
+    
+    /* Permite a movimentação via JavaScript */
+    transform: translate(0px, 0px) rotate(0deg);
+    transition: none; 
 }
 
-.voluntariado-fotos img:hover {
+/* Estado de clique/arrasto */
+.foto-card:active {
+    cursor: grabbing;
+    z-index: 50; /* Fica por cima de tudo enquanto você arrasta */
+    border-color: #ffffff;
+}
+
+/* Efeito Hover Azul que você configurou */
+.foto-card:hover {
     transform: scale(1.04);
     box-shadow: 0 0 15px rgba(30, 144, 255, 0.4);
+}
+
+/* Suas configurações exatas de imagem */
+.foto-card img {
+    width: 100%; /* Preenche totalmente o espaço da coluna */
+    height: 320px; /* Sua altura equilibrada */
+    object-fit: cover;
+    border-radius: 8px;
+    pointer-events: none; /* Evita bug nativo do navegador ao arrastar */
+}
+
+/* Legenda sutil abaixo da imagem */
+.foto-card span {
+    font-size: 13px;
+    color: #71717a;
+    margin-top: 10px;
+    font-weight: 500;
 }
 
 /* =========================
@@ -990,9 +1028,6 @@ body {
 
 
 .footer-portfolio {
-    background: #050505;
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
-    padding: 30px 20px;
     text-align: center;
     margin-top: 40px;
 }
@@ -1063,60 +1098,217 @@ body {
         font-size: 14px;
     }
 
-    /* --- PAINEL DE CONTATO --- */
-    /* Remove as margens exageradas e ajusta o container preto */
-    .painel-contato {
-        padding: 20px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .contato-texto {
-        font-size: 14px;
-        line-height: 1.5;
-    }
-
-    /* Faz os links de contato ocuparem a largura total, um embaixo do outro */
-    .contato-links {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        width: 100%;
-    }
-
-    .link-linha {
-        font-size: 14px;
-        padding: 12px;
-        justify-content: center; /* Centraliza o texto do link no botão */
-        width: 100%;
-        box-sizing: border-box;
-    }
+   /* --- PAINEL DE CONTATO --- */
+/* Garante que o container ocupe o espaço correto e se espalhe na tela */
+.painel-contato {
+    padding: 60px 40px; /* Aumentado o padding vertical para dar corpo e preencher a tela */
+    width: 100%;
+    max-width: 1250px;  /* Alinhado com a largura máxima da sua galeria de voluntariado */
+    margin: 40px auto 0 auto; /* Centraliza o painel na tela */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo interno */
+    background: #09090b; /* Garante o fundo Total Black se necessário */
+    border-top: 1px solid #27272a; /* Linha sutil para separar da seção de cima */
 }
 
-/* ===================================================
-   VERSÃO PARA CELULAR (RESPONSIVIDADE) - ATUALIZADO
-=================================================== */
-@media (max-width: 768px) {
+.contato-texto {
+    font-size: 16px; /* Ajustado levemente para telas maiores */
+    line-height: 1.6;
+    text-align: center;
+    max-width: 600px; /* Limita o texto para não ficar esticado */
+    margin-bottom: 30px;
+    color: #a1a1aa;
+}
+
+/* Centraliza os blocos de links e permite que eles respirem */
+.contato-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Espaçamento mais elegante entre os botões */
+    width: 100%;
+    max-width: 400px; /* Limita a largura máxima dos botões no desktop para ficar elegante */
+}
+
+.link-linha {
+    font-size: 15px;
+    padding: 14px 20px; /* Botões mais robustos e fáceis de clicar */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza o texto do link no botão */
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background: #18181b;
+    border: 1.5px solid #27272a;
+    color: #ffffff;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efeito Highlight sutil ao passar o mouse nos contatos */
+.link-linha:hover {
+    background: #27272a;
+    border-color: #ffffff;
+}
+
+}
+/* Container que fixa o crachá na esquerda da tela */
+.badge-container {
+    position: fixed;
+    top: 0;
+    left: 25px; /* Mais perto da borda para não cobrir o conteúdo */
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    perspective: 1000px;
+}
+
+/* Container atualizado com z-index alto */
+.badge-container {
+    position: fixed;
+    top: 0;
+    left: 25px; 
+    z-index: 9999; /* Garante que fica na frente de QUALQUER fundo ou menu do site */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    perspective: 1000px;
+}
+
+/* O cordão reformulado para aparecer no fundo escuro */
+.badge-cordon {
+    width: 4px;
+    height: 60px; 
+    /* Um cinza prateado premium para destacar bem no tema escuro */
+    background: linear-gradient(90deg, #52525b, #a1a1aa, #3f3f46); 
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidade */
+}
+
+/* O corpo do Crachá - COMPACTO */
+.badge-card {
+    width: 110px; /* Reduzido de 150px */
+    height: 175px; /* Reduzido de 240px */
+    background: #09090b; 
+    border: 1.5px solid #27272a;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
     
-    /* ... (outras regras de responsividade que você já tem) ... */
-
-    /* CENTRALIZAR A FOTO APENAS NO CELULAR */
-    .container-perfil {
-        display: flex; /* Transforma o container em flexbox */
-        justify-content: center; /* Centraliza a foto horizontalmente */
-        width: 100%; /* Garante que ocupa toda a largura disponível */
-        margin-bottom: 20px; /* Adiciona um espacinho embaixo da foto */
-    }
-
-    /* Opcional: Garanta que a foto em si tenha tamanho correto */
-    .foto-perfil {
-        max-width: 150px; /* Define um tamanho máximo bom para celular */
-        height: auto; /* Mantém a proporção da imagem */
-        border-radius: 50%; /* Opcional: Deixa redonda, se preferir */
-        /* display: block; */ /* Às vezes necessário se usar margens automáticas em vez de flexbox */
-        /* margin-left: auto; */
-        /* margin-right: auto; */ /* Forma clássica de centralizar block-elements */
-    }
-
-    /* ... (restante das suas regras do @media) ... */
+    transform-origin: top center;
+    cursor: grab;
+    user-select: none;
 }
+
+.badge-card:active {
+    cursor: grabbing;
+}
+
+/* Detalhes internos menores */
+.badge-header {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 4px;
+}
+
+.badge-tech {
+    font-size: 7px; /* Texto bem sutil */
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #a1a1aa;
+}
+
+/* Foto quadrada menor */
+.badge-photo {
+    width: 65px; /* Reduzido de 85px */
+    height: 65px; 
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1.5px solid #27272a;
+    background: #18181b;
+}
+
+.badge-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badge-info {
+    text-align: center;
+    margin-top: 2px;
+}
+
+.badge-info h3 {
+    font-size: 10px; /* Nome menor */
+    color: #ffffff;
+    margin: 0;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge-info p {
+    font-size: 8px; /* Cargo menor */
+    color: #71717a;
+    margin: 2px 0 0 0;
+}
+
+/* Código de barras falso proporcional */
+.badge-bar-code {
+    width: 75px;
+    height: 12px;
+    background: linear-gradient(90deg, 
+        #ffffff 3px, transparent 3px, 
+        transparent 5px, #ffffff 5px, 
+        #ffffff 6px, transparent 6px,
+        #ffffff 10px, #ffffff 14px,
+        transparent 14px, #ffffff 17px
+    );
+    background-size: 20px 100%;
+    opacity: 0.3;
+}
+
+/* Container que agora vai balançar por inteiro */
+.badge-container {
+    position: fixed;
+    top: 0;
+    left: 25px; 
+    z-index: 9999; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    perspective: 1000px;
+    
+    /* O ponto de rotação agora é EXATAMENTE o topo da cordinha */
+    transform-origin: top center;
+    cursor: grab;
+    user-select: none;
+}
+
+.badge-container:active {
+    cursor: grabbing;
+}
+
+/* O corpo do Crachá (Limpo, sem o transform-origin antigo) */
+.badge-card {
+    width: 110px; 
+    height: 175px; 
+    background: #09090b; 
+    border: 1.5px solid #27272a;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    pointer-events: none; /* Faz o clique passar direto para o container */
+}
+
