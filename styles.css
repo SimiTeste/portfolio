@@ -1026,3 +1026,69 @@ body {
     letter-spacing: 1px;
     text-align: center;
 }
+
+/* ===================================================
+   VERSÃO PARA CELULAR (RESPONSIVIDADE)
+=================================================== */
+@media (max-width: 768px) {
+    
+    /* Ajusta o espaçamento geral da página */
+    body {
+        padding: 15px;
+    }
+
+    /* Títulos menores para não quebrarem a tela */
+    h2 {
+        font-size: 22px !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* --- TECH STACK (Linguagens) --- */
+    /* Faz a lista quebrar as linhas e centralizar os itens */
+    .tech-container { 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    /* Deixa os cards um pouco menores para caberem 2 por linha no celular */
+    .tech-item {
+        width: 120px;
+        padding: 15px;
+        gap: 8px;
+    }
+
+    .tech-item span {
+        font-size: 14px;
+    }
+
+    /* --- PAINEL DE CONTATO --- */
+    /* Remove as margens exageradas e ajusta o container preto */
+    .painel-contato {
+        padding: 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .contato-texto {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    /* Faz os links de contato ocuparem a largura total, um embaixo do outro */
+    .contato-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .link-linha {
+        font-size: 14px;
+        padding: 12px;
+        justify-content: center; /* Centraliza o texto do link no botão */
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
